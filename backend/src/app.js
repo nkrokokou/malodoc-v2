@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import rateLimit from 'express-rate-limit';
+import { connectDatabase } from './config/database.js';
 
 // Import des routes
 import authRoutes from './routes/authRoutes.js';
@@ -14,6 +15,9 @@ import donationRoutes from './routes/donationRoutes.js';
 
 // Charger les variables d'environnement
 dotenv.config();
+
+// Connecter à la base de données
+connectDatabase();
 
 // Initialiser Express
 const app = express();

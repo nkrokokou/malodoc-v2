@@ -174,6 +174,12 @@ const translations = {
         "auth.demo_patient": "Patient",
         "auth.demo_doctor": "Doctor",
         "auth.demo_admin": "Admin",
+
+        // Testimonials
+        "landing.testimonial.role_doctor": "Doctor, Cardiology",
+        "landing.testimonial.role_patient": "Patient",
+        "landing.testimonial.doctor_quote": "Malodoc has transformed how I manage my practice. The interface is intuitive and my patients love the ease of booking appointments online.",
+        "landing.testimonial.patient_quote": "Finding a doctor has never been easier! I booked my appointment in minutes and the whole experience was seamless. Highly recommend!",
     },
     fr: {
         // Global
@@ -346,7 +352,13 @@ const translations = {
         "auth.demo_patient": "Patient",
         "auth.demo_doctor": "Docteur",
         "auth.demo_admin": "Admin",
-    }
+
+        // Testimonials
+        "landing.testimonial.role_doctor": "Médecin, Cardiologie",
+        "landing.testimonial.role_patient": "Patient",
+        "landing.testimonial.doctor_quote": "Malodoc a transformé ma façon de gérer mon cabinet. L'interface est intuitive et mes patients adorent la facilité de prise de rendez-vous en ligne.",
+        "landing.testimonial.patient_quote": "Trouver un médecin n'a jamais été aussi facile ! J'ai réservé mon rendez-vous en quelques minutes et toute l'expérience était fluide. Je recommande vivement !",
+    },
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)

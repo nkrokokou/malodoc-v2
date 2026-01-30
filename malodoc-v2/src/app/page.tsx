@@ -12,22 +12,22 @@ export default function LandingPage() {
   const { t } = useLanguage()
 
   return (
-    <div className="flex flex-col min-h-screen bg-black overflow-x-hidden selection:bg-secondary selection:text-black">
+    <div className="flex flex-col min-h-screen bg-background overflow-x-hidden selection:bg-secondary selection:text-secondary-foreground">
 
       {/* Floating Nano-Navbar */}
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-3xl px-4 flex justify-center">
-        <div className="glass px-6 py-3 rounded-full flex items-center gap-4 md:gap-8 border border-white/10 bg-black/30 backdrop-blur-md shadow-2xl">
-          <Link href="/" className="font-bold text-xl tracking-tighter text-white">Malodoc</Link>
-          <div className="hidden md:flex gap-6 text-sm font-medium text-zinc-400">
-            <Link href="#features" className="hover:text-white transition-colors">{t("landing.nav.features")}</Link>
-            <Link href="#about" className="hover:text-white transition-colors">{t("landing.nav.about")}</Link>
+        <div className="glass px-6 py-3 rounded-full flex items-center gap-4 md:gap-8 border border-border bg-card/80 backdrop-blur-md shadow-2xl">
+          <Link href="/" className="font-bold text-xl tracking-tighter text-foreground">Malodoc</Link>
+          <div className="hidden md:flex gap-6 text-sm font-medium text-muted-foreground">
+            <Link href="#features" className="hover:text-foreground transition-colors">{t("landing.nav.features")}</Link>
+            <Link href="#about" className="hover:text-foreground transition-colors">{t("landing.nav.about")}</Link>
           </div>
 
           <div className="flex items-center gap-2">
             <LanguageToggle />
             <ModeToggle />
             <Link href="/auth/login">
-              <Button size="sm" className="rounded-full bg-white text-black hover:bg-zinc-200 h-8 px-4 font-semibold ml-2">
+              <Button size="sm" className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 h-8 px-4 font-semibold ml-2">
                 {t("landing.nav.signin")}
               </Button>
             </Link>

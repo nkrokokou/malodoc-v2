@@ -21,6 +21,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useLanguage } from "@/components/language-provider"
 
 const formSchema = z.object({
     email: z.string().email("Invalid email address"),
@@ -28,6 +29,7 @@ const formSchema = z.object({
 })
 
 export default function LoginPage() {
+    const { t } = useLanguage()
     const [isLoading, setIsLoading] = React.useState(false)
     const [activeTab, setActiveTab] = React.useState("patient")
     const router = useRouter()
@@ -84,22 +86,22 @@ export default function LoginPage() {
     return (
         <div className="p-6 w-full max-w-md mx-auto">
             <div className="flex flex-col space-y-2 text-center mb-8">
-                <h1 className="text-3xl font-bold tracking-tight text-white glow-text">Malodoc Access</h1>
+                <h1 className="text-3xl font-bold tracking-tight text-white glow-text">{t("auth.login.title")}</h1>
                 <p className="text-sm text-zinc-400">
-                    Select your portal and sign in.
+                    {t("auth.login.desc")}
                 </p>
             </div>
 
             <Tabs defaultValue="patient" onValueChange={setActiveTab} className="w-full mb-6">
                 <TabsList className="grid w-full grid-cols-3 bg-white/5 border border-white/10">
                     <TabsTrigger value="patient" className="data-[state=active]:bg-primary data-[state=active]:text-white">
-                        <User className="w-4 h-4 mr-2" /> Patient
+                        <User className="w-4 h-4 mr-2" /> {t("auth.demo_patient")}
                     </TabsTrigger>
                     <TabsTrigger value="doctor" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white">
-                        <Stethoscope className="w-4 h-4 mr-2" /> Doctor
+                        <Stethoscope className="w-4 h-4 mr-2" /> {t("auth.demo_doctor")}
                     </TabsTrigger>
                     <TabsTrigger value="admin" className="data-[state=active]:bg-purple-500 data-[state=active]:text-white">
-                        <ShieldCheck className="w-4 h-4 mr-2" /> Admin
+                        <ShieldCheck className="w-4 h-4 mr-2" /> {t("auth.demo_admin")}
                     </TabsTrigger>
                 </TabsList>
             </Tabs>
@@ -111,7 +113,7 @@ export default function LoginPage() {
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-zinc-300">Email</FormLabel>
+                                <FormLabel className="text-zinc-300">{t("auth.email")}</FormLabel>
                                 <FormControl>
                                     <Input
                                         placeholder="name@example.com"
@@ -128,7 +130,7 @@ export default function LoginPage() {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel className="text-zinc-300">Password</FormLabel>
+                                <FormLabel className="text-zinc-300">{t("auth.password")}</FormLabel>
                                 <FormControl>
                                     <Input
                                         type="password"
@@ -153,14 +155,14 @@ export default function LoginPage() {
                         disabled={isLoading}
                     >
                         {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                        Access {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Portal
+                        {t("auth.signin")}
                     </Button>
                 </form>
             </Form>
 
             <div className="flex items-center gap-4 my-6">
                 <Separator className="flex-1 bg-white/10" />
-                <span className="text-xs text-zinc-500">OR</span>
+                <span className="text-xs text-zinc-500">{t("auth.or_continue")}</span>
                 <Separator className="flex-1 bg-white/10" />
             </div>
 
@@ -172,13 +174,13 @@ export default function LoginPage() {
                         <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
                     </svg>
                 )}
-                Continue with Google
+                Google
             </Button>
 
             <p className="px-8 text-center text-sm text-zinc-500 mt-6">
-                Don't have an account?{" "}
+                {t("auth.no_account")}{" "}
                 <Link href="/auth/register" className="underline underline-offset-4 hover:text-white transition-colors">
-                    Sign up
+                    {t("auth.signup")}
                 </Link>
             </p>
         </div>

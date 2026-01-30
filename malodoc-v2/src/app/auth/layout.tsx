@@ -1,10 +1,25 @@
+"use client"
+
+import Link from "next/link"
+import { useLanguage } from "@/components/language-provider"
+import { ModeToggle } from "@/components/mode-toggle"
+import { LanguageToggle } from "@/components/language-toggle"
+
 export default function AuthLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const { t } = useLanguage()
+
     return (
-        <div className="flex h-screen w-full bg-black">
+        <div className="flex h-screen w-full bg-black relative">
+            {/* Top Right Toggles */}
+            <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
+                <LanguageToggle />
+                <ModeToggle />
+            </div>
+
             {/* Left Side - Abstract Art */}
             <div className="hidden lg:flex w-1/2 relative overflow-hidden bg-black items-center justify-center">
                 <div className="absolute inset-0 bg-[url('/noise.png')] opacity-10"></div>
@@ -12,7 +27,7 @@ export default function AuthLayout({
                 <div className="absolute bottom-[-20%] right-[-20%] w-[80%] h-[80%] rounded-full bg-secondary/10 blur-[150px] animate-aurora"></div>
 
                 <div className="relative z-10 p-12 text-center animate-float">
-                    <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl">
+                    <Link href="/" className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl hover:scale-105 transition-transform cursor-pointer">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
@@ -25,10 +40,10 @@ export default function AuthLayout({
                         >
                             <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
                         </svg>
-                    </div>
-                    <h1 className="text-4xl font-bold tracking-tighter text-white mb-4">Malodoc</h1>
+                    </Link>
+                    <h1 className="text-4xl font-bold tracking-tighter text-white mb-4">{t("app.name")}</h1>
                     <p className="text-zinc-400 text-lg max-w-md mx-auto">
-                        Experience the next generation of healthcare management. Secure, fast, and beautiful.
+                        {t("landing.hero.desc")}
                     </p>
                 </div>
             </div>

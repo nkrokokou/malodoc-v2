@@ -53,7 +53,7 @@ export default function DashboardLayout({
             {/* Main Content */}
             <main className="flex-1 h-full overflow-y-auto relative z-10 p-4 md:p-8 pt-20 md:pt-8 scroll-smooth" id="overview">
                 {/* Top Bar for Toggles */}
-                <div className="absolute top-4 right-4 md:top-6 md:right-8 z-50 flex items-center gap-2">
+                <div className="absolute top-4 right-4 md:top-6 md:right-8 z-50 flex items-center gap-3 glass px-2 py-1 rounded-full border border-border/50">
                     <LanguageToggle />
                     <ModeToggle />
                 </div>
